@@ -4,6 +4,7 @@ import {ReactComponent as ArrowRightIcon} from '../assets/svg/keyboardArrowRight
 import visibilityIcon from '../assets/svg/visibilityIcon.svg'
 
 import {getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/auth'
+import {setDoc, doc, serverTimestamp} from 'firebase/firestore'
 import {db} from '../firebase.config'
 
 function SignUp() {
@@ -39,6 +40,15 @@ function SignUp() {
       updateProfile(auth.currentUser, {
         displayName: name
       })
+
+      // This creates a copy of the form data because you don't want to change the state of the app
+      const formDataCopy = {...formData}
+      // This deletes the password from the form data copy for security reasons.  You can't store passwords in databases
+      delete formDataCopy.password
+      // Below adds the timestamp to the record in the database
+      formDataCopy.timestamp = serverTimestamp()
+
+      await setDoc(doc(db, 'users', user.uid), formDataCopy)
 
       navigate('/')
     } catch (error) {
