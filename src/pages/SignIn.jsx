@@ -5,6 +5,7 @@ import visibilityIcon from '../assets/svg/visibilityIcon.svg'
 import {toast} from 'react-toastify'
 
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
+import OAuth from '../components/OAuth'
 
 function SignIn() {
   const [showPass, setShowPass] = useState(false)
@@ -71,7 +72,7 @@ function SignIn() {
             </div>
           </form>
 
-          {/* Google OAuth Component */}
+          <OAuth />
 
           <Link to='/sign-up' className='registerLink'>
             Don't Have an Account? Create One!
