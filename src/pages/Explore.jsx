@@ -19,9 +19,9 @@ function Explore() {
             <img src={rentCategoryImage} alt='rent' className='exploreCategoryImg' />
             <p className="exploreCategoryName">Places For Rent</p>
           </Link>
-          <Link to='/category/sell'>
+          <Link to='/category/sale'>
             <img src={sellCategoryImage} alt='sell' className='exploreCategoryImg' />
-            <p className="exploreCategoryName">Places For Sell</p>
+            <p className="exploreCategoryName">Places For Sale</p>
           </Link>
         </div>
       </main>
