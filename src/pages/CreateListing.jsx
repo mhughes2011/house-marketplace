@@ -65,31 +65,33 @@ function CreateListing() {
 
   const onSubmit = async (e) => {
     e.preventDefault()
+    console.log(formData)
   }
 
   const onMutate = (e) => {
     let boolean = null
 
-    if (e.target.value === 'true') {
+    if(e.target.value === 'true') {
       boolean = true
     }
-    if (e.target.value === 'false') {
+
+    if(e.target.value === 'false') {
       boolean = false
     }
 
     // Files
-    if (e.target.files) {
+    if(e.target.files) {
       setFormData((prevState) => ({
         ...prevState,
-        images: e.target.files,
+        images: e.target.files
       }))
     }
 
-    // Text/Booleans/Numbers
-    if (!e.target.files) {
+    // Text/booleans/numbers
+    if(!e.target.files) {
       setFormData((prevState) => ({
         ...prevState,
-        [e.target.id]: boolean ?? e.target.value,
+        [e.target.id]: boolean ?? e.target.value
       }))
     }
   }
